@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sliding Block Solver</title>
+</head>
+<style>
+    #wrapper {
+        margin-left: 200px;
+        line-height: 10px;
+        font-family: Microsoft JhengHei;
+    }
+    
+    #content {
+        margin-top: 20px;
+        margin-left: 50px;
+    }
+    
+    #sidebar {
+        float: left;
+        width: 200px;
+        margin-left: -200px;
+        background-color: #d0d0d0;
+    }
+    
+    #cleared {
+        clear: both;
+    }
+</style>
+
+<body>
+    <div id="wrapper">
+        <div id="sidebar">
+            <center>
+                <hr> <b>Sliding Block Solver</b>
+                <p style="font-size:12px">Made by Ruxuan Xu</p>
+                <hr> 盤面大小
+                <form name="parameters" method="GET" action="index.html" target="_parent">
+                    <p>
+                        寬:<input type="number" value="3" name="w" id="form1" min="1" max="4"> 高:
+                        <input type="number" value="3" name="h" id="form2" min="1" max="4">
+                    </p>
+                    <input type="submit" name="submit" value="開新盤面" onclick="getUrlValue()">
+                </form>
+                <hr> 盤面布局</center>
+            <p>
+                <form action="" method="post" style="margin-left:30px">
+                    <input type=radio value="0" id="dr0" name="put" onclick="getRadioValue(this.id)" checked/> 繪製積木<br>
+                    <input type=radio value="1" id="dr1" name="put" onclick="getRadioValue(this.id)" /> 刪除積木<br>
+                    <input type=radio value="2" id="dr2" name="put" onclick="getRadioValue(this.id)" /> 目標積木<br>
+                    <input type=radio value="3" id="dr3" name="put" onclick="getRadioValue(this.id)" /> 目標位置<br>
+                </form>
+            </p>
+            <center>
+                <hr> 搜索演算法
+                <p>
+                    <input type=radio value="0" id="algo0" name="calc" onclick="getAlgoValue(this.id)" checked/>IDS
+                    <input type=radio value="1" id="algo1" name="calc" onclick="getAlgoValue(this.id)" />IDS截肢
+                </p>
+                <hr><input type="submit" value="開始計算" onclick="calc()" /><br>
+                <hr>
+            </center>
+        </div>
+        <div id="content">
+            <canvas id="myCanvas" width="600" height="400">
+            </canvas>
+            <p>
+                <input type="button" id="button1" value="上一步" style="display: none;" onclick="toStep(this.id)" />
+                <input type="button" id="button2" value="下一步" style="display: none;" onclick="toStep(this.id)" />
+            </p>
+            <div id='console'></div>
+        </div>
+        <div id="cleared"></div>
+    </div>
+    <script language="JavaScript" src="script.js"></script>
+</body>
+
+</html>
