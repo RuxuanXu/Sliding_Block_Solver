@@ -171,14 +171,6 @@ function drawSelectedBlock() {
                 ctx.strokeRect(B_LEN * p, B_LEN * i, B_LEN, B_LEN);
 }
 
-function render() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBG.call(ctx);
-    drawBlocks.call(ctx);
-    drawSelectedBlock.call(ctx);
-    drawStroke.call(ctx);
-}
-
 //Turn array into 32bits unsigned int
 function toBinary() {
     var data = new Array(B_SIZE);
@@ -549,6 +541,16 @@ function toStep(id) {
     }
     return stepNum;
 }
+
+//Main Loop
+function render() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBG.call(ctx);
+    drawBlocks.call(ctx);
+    drawSelectedBlock.call(ctx);
+    drawStroke.call(ctx);
+}
+
 setInterval(render, 30);
 
 function createMessage(str) {
@@ -557,7 +559,7 @@ function createMessage(str) {
     list.insertBefore(newNode, list.childNodes[0]);
 }
 
-/* console.log function from: http://www.kobashicomputing.com/send-your-console-output-to-the-result-pane-in-jsfiddle */
+/*console.log function from: http://www.kobashicomputing.com/send-your-console-output-to-the-result-pane-in-jsfiddle*/
 var c = function() {
     return ({
         log: function(msg) {
